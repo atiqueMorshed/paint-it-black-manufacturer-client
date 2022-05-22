@@ -49,7 +49,6 @@ const Login = () => {
     if (emailUser?.user) {
       mutateAsync({
         uid: emailUser.user.uid,
-        isVerified: emailUser.user.emailVerified,
       });
     }
   }, [emailUser, mutateAsync]);

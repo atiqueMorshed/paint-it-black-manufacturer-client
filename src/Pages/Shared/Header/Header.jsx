@@ -32,7 +32,13 @@ const Header = () => {
 
         <div className="right flex justify-center items-center gap-3">
           {authUser ? (
-            <div onClick={() => signOut(auth)} className="cursor-pointer">
+            <div
+              onClick={() => {
+                localStorage.removeItem('paintitblack-at');
+                signOut(auth);
+              }}
+              className="cursor-pointer"
+            >
               <FontAwesomeIcon
                 className="w-6 h-6"
                 icon={faArrowRightFromBracket}

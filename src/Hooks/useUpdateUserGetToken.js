@@ -1,22 +1,21 @@
 import { useMutation } from 'react-query';
 import axios from '../api/axiosBaseUrl'; // axios with the baseURL
 
-const updateUserGetToken = async ({ uid, isVerified }) => {
-  if (uid && typeof isVerified === 'boolean') {
+const updateUserGetToken = async ({ uid }) => {
+  if (uid) {
     try {
       const { data } = await axios({
         method: 'PUT',
         url: '/api/user',
         data: {
           uid,
-          isVerified,
         },
       });
-      console.log(data);
 
-      if (data?.accessToken) {
-        localStorage.setItem('paintitblack-at', data.accessToken);
-        return { accessToken: data.accessToken };
+      if (data) {
+        console.log(data);
+        localStorage.setItem('paintitblack-at', data);
+        return { message: 'JWT SET' };
       }
     } catch (error) {
       console.log(error);

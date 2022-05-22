@@ -8,11 +8,35 @@ import { auth } from '../../firebase.init';
 import googleIcon from '../../Assets/icons/google.png';
 import SpinnerFullScreen from '../Shared/SpinnerFullScreen';
 import Error from '../Shared/Error';
+import { toast } from 'react-toastify';
+import { useUpdateUserGetToken } from '../../Hooks/useUpdateUserGetToken';
 
 const GoogleLogin = ({ from }) => {
   const navigate = useNavigate();
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
+
+  const onSuccess = (data) => {
+    navigate(from, { replace: true });
+  };
+
+  const onError = (error) => {
+    toast.error(error.message);
+  };
+
+  const { mutateAsync, isLoading } = useUpdateUserGetToken({
+    onSuccess,
+    onError,
+  });
+
+  // Generates JWT after successful login
+  useEffect(() => {
+    if (googleUser?.user) {
+      mutateAsync({
+        uid: googleUser.user.uid,
+      });
+    }
+  }, [googleUser, mutateAsync]);
 
   // Navigates to "from"
   useEffect(() => {
@@ -21,7 +45,7 @@ const GoogleLogin = ({ from }) => {
     }
   }, [googleUser, navigate, from]);
 
-  if (googleLoading) {
+  if (googleLoading || isLoading) {
     return <SpinnerFullScreen />;
   }
 

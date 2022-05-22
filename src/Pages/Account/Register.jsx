@@ -49,14 +49,14 @@ const Register = () => {
     if (emailUser?.user) {
       mutateAsync({
         uid: emailUser.user.uid,
-        isVerified: emailUser.user.emailVerified,
       });
     }
   }, [emailUser, mutateAsync]);
 
   // Redirects if user exists
   useEffect(() => {
-    if (authUser) {
+    console.log(authUser);
+    if (authUser && localStorage.getItem('paintitblack-at') === authUser.uid) {
       navigate('/', { replace: true });
     }
   }, [authUser, navigate]);
