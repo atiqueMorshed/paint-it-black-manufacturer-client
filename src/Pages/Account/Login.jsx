@@ -5,10 +5,14 @@ import {
   useSignInWithEmailAndPassword,
 } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { auth } from '../../firebase.init';
-import Spinner from '../Shared/Spinner';
+
 import Error from '../Shared/Error';
+import SpinnerFullScreen from '../Shared/SpinnerFullScreen';
+import GoogleLogin from './GoogleLogin';
+import { useUpdateUserGetToken } from '../../Hooks/useUpdateUserGetToken';
 
 const Login = () => {
   const location = useLocation();
@@ -16,6 +20,19 @@ const Login = () => {
   const from = location.state?.from?.pathname || '/';
 
   const [authUser, authLoading] = useAuthState(auth);
+
+  const onSuccess = (data) => {
+    navigate(from, { replace: true });
+  };
+
+  const onError = (error) => {
+    toast.error(error.message);
+  };
+
+  const { mutateAsync, isLoading } = useUpdateUserGetToken({
+    onSuccess,
+    onError,
+  });
 
   const {
     handleSubmit,
@@ -26,6 +43,16 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
     useSignInWithEmailAndPassword(auth);
+
+  // Generates JWT after successful login
+  useEffect(() => {
+    if (emailUser?.user) {
+      mutateAsync({
+        uid: emailUser.user.uid,
+        isVerified: emailUser.user.emailVerified,
+      });
+    }
+  }, [emailUser, mutateAsync]);
 
   // Resets form on success
   useEffect(() => {
@@ -47,12 +74,8 @@ const Login = () => {
     }
   };
 
-  if (emailLoading || authLoading) {
-    return (
-      <div className="h-screen flex justify-center items-center">
-        <Spinner />
-      </div>
-    );
+  if (emailLoading || authLoading || isLoading) {
+    return <SpinnerFullScreen />;
   }
 
   return (
@@ -141,6 +164,8 @@ const Login = () => {
             </Link>
           </p>
         </form>
+        <div className="divider">OR</div>
+        <GoogleLogin from={from} />
       </div>
     </div>
   );

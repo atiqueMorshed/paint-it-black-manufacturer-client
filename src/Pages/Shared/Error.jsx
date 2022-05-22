@@ -1,4 +1,4 @@
-const ErrorPreview = ({ error }) => {
+const Error = ({ error }) => {
   return (
     <label className="label">
       <span className="text-red-500 label-text-alt">{error}</span>
@@ -6,4 +6,4 @@ const ErrorPreview = ({ error }) => {
   );
 };
 
-export default ErrorPreview;
+export default Error;
