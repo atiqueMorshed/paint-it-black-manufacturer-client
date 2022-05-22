@@ -13,7 +13,6 @@ const updateUserGetToken = async ({ uid }) => {
       });
 
       if (data) {
-        console.log(data);
         localStorage.setItem('paintitblack-at', data);
         return { message: 'JWT SET' };
       }

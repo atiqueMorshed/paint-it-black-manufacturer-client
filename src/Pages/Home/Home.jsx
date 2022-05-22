@@ -1,9 +1,12 @@
 import React from 'react';
+import Banner from './Banner';
+import Tools from './Tools';
 
 const Home = () => {
   return (
-    <div className="py-36">
-      <h1 className="text-3xl text-center">HomePage</h1>
+    <div className="">
+      <Banner />
+      <Tools />
     </div>
   );
 };

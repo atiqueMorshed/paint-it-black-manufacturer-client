@@ -7,6 +7,7 @@ import Home from './Pages/Home/Home';
 import Header from './Pages/Shared/Header/Header';
 
 import 'react-toastify/dist/ReactToastify.css';
+import NotFound from './Pages/Shared/NotFound';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer />
     </div>
