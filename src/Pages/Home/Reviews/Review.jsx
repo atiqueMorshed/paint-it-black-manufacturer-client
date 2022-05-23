@@ -7,8 +7,18 @@ import { faStar as faSolidStar } from '@fortawesome/free-solid-svg-icons';
 
 const Review = ({ review: { name, date, rating, review } }) => {
   // Generates Random Profile background.
-  const colors = ['#F06292', '#0E86D4', '#36D399', '#FF80AB', '#E6D94A'];
-  const idx = Math.floor(Math.random() * 5);
+  const colors = [
+    '#F06292',
+    '#0E86D4',
+    '#36D399',
+    '#FF80AB',
+    '#E6D94A',
+    '#FF8080',
+    '#FEE2C5',
+    '#A85CF9',
+    '#9145B6',
+  ];
+  const idx = Math.floor(Math.random() * 9);
 
   // Generates initials.
   const names = name.split(' ');
