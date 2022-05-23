@@ -8,6 +8,7 @@ import Header from './Pages/Shared/Header/Header';
 
 import 'react-toastify/dist/ReactToastify.css';
 import NotFound from './Pages/Shared/NotFound';
+import Footer from './Pages/Shared/Footer';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/Register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
       <ToastContainer />
     </div>
   );
