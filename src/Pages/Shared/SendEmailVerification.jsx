@@ -33,7 +33,7 @@ const SendEmailVerification = () => {
         </div>
       ),
       {
-        duration: 6000,
+        duration: 2000,
         id: 'sendingVerification',
       }
     );
@@ -57,13 +57,14 @@ const SendEmailVerification = () => {
     );
   }
   if (authUser?.emailVerified === false) {
-    return toast.error(
+    return toast(
       (t) => (
         <div className="flex gap-3 items-center">
-          <div className="flex flex-col justify-center items-start">
+          <div className="flex flex-col justify-center items-start gap-1">
             <p className="font-medium">Email not verified.</p>
+            <p className="text-xs">No limitations for testing</p>
             <button onClick={handleSendVerification} className="btn btn-xs">
-              send
+              Send Email
             </button>
           </div>
           <FontAwesomeIcon

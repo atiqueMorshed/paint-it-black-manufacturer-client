@@ -41,7 +41,7 @@ const Tools = () => {
           </h1>
           <div className="flex flex-col items-center gap-4 h-[200px]">
             <h1 className="text-2xl text-center font-bold">
-              Currently no tools found in DB.
+              Currently no tools were found in our database.
             </h1>
             <h1 className="text-center">
               Please contact support for more information.
@@ -64,7 +64,7 @@ const Tools = () => {
             <Tool
               key={tool._id}
               tool={tool}
-              isLastOdd={idx === len - 1 ? true : false}
+              isLastOdd={idx === len - 1 && len % 2 === 1 ? true : false}
             />
           ))}
         </div>

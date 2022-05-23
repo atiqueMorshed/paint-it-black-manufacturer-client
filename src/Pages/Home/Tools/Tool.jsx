@@ -13,7 +13,6 @@ const Tool = ({
   },
   isLastOdd,
 }) => {
-  console.log('ODD', isLastOdd);
   return (
     <div
       className={`relative h-[600px] text-black ${
@@ -25,17 +24,10 @@ const Tool = ({
         src={imageUrl}
         alt={toolName}
       />
-      <div className="absolute bottom-5 left-3 md:left-10 lg:bottom-10 lg:left-20 text-secondary shadow">
-        <div className="bg-base-100 bg-opacity-80 p-4 rounded flex flex-col gap-2">
+      <div className="w-[280px] sm:w-[400px] md:w-[280px] lg:w-[400px] max-w-11/12 absolute bottom-5 left-3 md:left-10 lg:bottom-10 lg:left-20 text-secondary shadow">
+        <div className="bg-base-100 bg-opacity-80 p-4 sm:p-8 md:p-4 lg:p-8 rounded flex flex-col gap-2">
           <h1 className="text-2xl mb-2 font-bold">{toolName}</h1>
-          <p className="text-xl">
-            {toolDescription.slice(0, 25)}{' '}
-            {toolDescription.length >= 25 && (
-              <Link className="hover:text-white" to={`/tools/${_id}`}>
-                ...
-              </Link>
-            )}
-          </p>
+          <p className="text-xl line-clamp-2">{toolDescription}</p>
           <p className="">
             Minimum Order Quantity:{' '}
             <span className="font-extrabold text-lg">{minQuantity}</span>
