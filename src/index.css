@@ -9,3 +9,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Extended Styles */
+@layer components {
+  .button-style-1 {
+    @apply btn rounded hover:bg-opacity-90 hover:text-gray-100 text-base-100 dark:text-white;
+  }
+}

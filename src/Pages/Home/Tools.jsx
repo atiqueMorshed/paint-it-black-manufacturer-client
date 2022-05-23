@@ -5,7 +5,7 @@ import paints from '../../Assets/images/items/item03.jpg';
 
 const Tools = () => {
   return (
-    <div id="tools" className="my-32">
+    <div id="tools" className="my-32 text-secondary">
       <h1 className="text-4xl text-center font-medium pb-16">
         Tools We Provide
       </h1>
@@ -16,24 +16,26 @@ const Tools = () => {
             src={paintbrush}
             alt="Paintbrush"
           />
-          <div className="absolute bottom-5 left-6 md:left-10 lg:bottom-10 lg:left-20 text-black dark:text-white">
-            <div className="bg-white dark:bg-black bg-opacity-80 dark:bg-opacity-40 p-4 rounded flex flex-col gap-2">
+          <div className="absolute bottom-5 left-6 md:left-10 lg:bottom-10 lg:left-20 shadow">
+            <div className="bg-base-100 bg-opacity-40 p-4 rounded flex flex-col gap-2">
               <h1 className="text-2xl font-medium mb-2">PaintBrush</h1>
-              <p className="text-[#3ABFF8] text-xl">
+              <p className="text-xl text-accent">
                 Built with best quality bristles!
               </p>
               <p className="">
-                Minimum Order Quantity: <span className="font-bold">1000</span>
+                Minimum Order Quantity:{' '}
+                <span className="font-bold text-lg">1000</span>
               </p>
               <p className="">
-                Total Available: <span className="font-bold">12000</span>
+                Total Available:{' '}
+                <span className="font-bold text-lg">12000</span>
               </p>
               <p className="">
-                Price Per Unit: <span className="font-bold">60</span>
+                Price Per Unit: <span className="font-bold text-lg">$4</span>
               </p>
 
               <Link to="/items/brushes">
-                <button className="btn rounded">Order Now!</button>
+                <button className="button-style-1">Order Now!</button>
               </Link>
             </div>
           </div>
@@ -44,22 +46,26 @@ const Tools = () => {
             src={paintRoller}
             alt="Paint Roller"
           />
-          <div className="absolute bottom-5 left-6 md:left-10 lg:bottom-10 lg:left-20 text-black dark:text-white">
-            <div className="bg-white dark:bg-black bg-opacity-80 dark:bg-opacity-40 p-4 rounded flex flex-col gap-2">
+          <div className="absolute bottom-5 left-6 md:left-10 lg:bottom-10 lg:left-20 shadow">
+            <div className="bg-base-100 bg-opacity-40 p-4 rounded flex flex-col gap-2">
               <h1 className="text-2xl font-medium mb-2">Paint Roller</h1>
-              <p className="text-xl">We use high quality Synthetic roller</p>
-              <p className="">
-                Minimum Order Quantity: <span className="font-bold">1000</span>
+              <p className="text-xl text-accent">
+                We use high quality Synthetic roller
               </p>
               <p className="">
-                Total Available: <span className="font-bold">12000</span>
+                Minimum Order Quantity:{' '}
+                <span className="font-bold text-lg">1000</span>
               </p>
               <p className="">
-                Price Per Unit: <span className="font-bold">60</span>
+                Total Available:{' '}
+                <span className="font-bold text-lg">12000</span>
+              </p>
+              <p className="">
+                Price Per Unit: <span className="font-bold text-lg">$15</span>
               </p>
 
               <Link to="/items/rollers">
-                <button className="btn rounded">Order Now!</button>
+                <button className="button-style-1">Order Now!</button>
               </Link>
             </div>
           </div>
@@ -71,21 +77,24 @@ const Tools = () => {
           src={paints}
           alt="Paints"
         />
-        <div className="absolute bottom-5 left-6 md:left-10 lg:bottom-10 lg:left-20 text-black dark:text-white">
-          <div className="bg-white dark:bg-black bg-opacity-80 dark:bg-opacity-40 p-4 rounded flex flex-col gap-2">
+        <div className="absolute bottom-5 left-6 md:left-10 lg:bottom-10 lg:left-20 text-secondary shadow">
+          <div className="bg-base-100 bg-opacity-40 p-4 rounded flex flex-col gap-2">
             <h1 className="text-2xl font-medium mb-2">Color Palettes</h1>
-            <p className="text-xl">Get accurate color palettes from us.</p>
-            <p className="">
-              Minimum Order Quantity: <span className="font-bold">1000</span>
+            <p className="text-xl text-accent">
+              Get accurate color palettes from us.
             </p>
             <p className="">
-              Total Available: <span className="font-bold">12000</span>
+              Minimum Order Quantity:{' '}
+              <span className="font-bold text-lg">1000</span>
             </p>
             <p className="">
-              Price Per Unit: <span className="font-bold">60</span>
+              Total Available: <span className="font-bold text-lg">12000</span>
+            </p>
+            <p className="">
+              Price Per Unit: <span className="font-bold text-lg">$20</span>
             </p>
             <Link to="/items/colors">
-              <button className="btn rounded">Order Now!</button>
+              <button className="button-style-1">Order Now!</button>
             </Link>
           </div>
         </div>

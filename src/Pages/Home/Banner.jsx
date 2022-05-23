@@ -43,7 +43,7 @@ const Banner = () => {
               <h1 className="text-xl font-medium mb-6">
                 24/7 Customer Support
               </h1>
-              <button className="btn rounded">
+              <button className="button-style-1">
                 <ScrollLink
                   to="tools"
                   spy={true}
@@ -71,7 +71,7 @@ const Banner = () => {
               <h1 className="text-xl md:text-3xl font-medium mb-6">
                 Track your orders.
               </h1>
-              <button className="btn rounded">
+              <button className="button-style-1">
                 <Link to="/manage">Manage Now</Link>
               </button>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Banner from './Banner';
+import Reviews from './Reviews/Reviews';
 import Tools from './Tools';
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     <div className="">
       <Banner />
       <Tools />
+      <Reviews />
     </div>
   );
 };
