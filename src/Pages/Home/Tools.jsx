@@ -35,7 +35,7 @@ const Tools = () => {
                 <span className="font-extrabold text-lg">$4</span>
               </p>
 
-              <Link to="/items/brushes">
+              <Link to="/tools/01">
                 <button className="button-style-1 mt-2">Order Now!</button>
               </Link>
             </div>
@@ -66,7 +66,7 @@ const Tools = () => {
                 <span className="font-extrabold text-lg">$15</span>
               </p>
 
-              <Link to="/items/rollers">
+              <Link to="/tools/02">
                 <button className="button-style-1 mt-2">Order Now!</button>
               </Link>
             </div>
@@ -97,7 +97,7 @@ const Tools = () => {
               Price Per Unit:{' '}
               <span className="font-extrabold text-lg">$20</span>
             </p>
-            <Link to="/items/colors">
+            <Link to="/tools/03">
               <button className="button-style-1 mt-2">Order Now!</button>
             </Link>
           </div>

@@ -1,14 +1,16 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { Toaster } from 'react-hot-toast';
 import Login from './Pages/Account/Login';
 import Register from './Pages/Account/Register';
 import Home from './Pages/Home/Home';
 import Header from './Pages/Shared/Header/Header';
 
-import 'react-toastify/dist/ReactToastify.css';
 import NotFound from './Pages/Shared/NotFound';
 import Footer from './Pages/Shared/Footer';
+import RequireAuth from './Pages/Shared/RequireAuth';
+import Purchase from './Pages/Purchase/Purchase';
+import SendEmailVerification from './Pages/Shared/SendEmailVerification';
 
 const App = () => {
   return (
@@ -18,10 +20,19 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route
+          path="/tools/:toolId"
+          element={
+            <RequireAuth>
+              <Purchase />
+            </RequireAuth>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
-      <ToastContainer />
+      <SendEmailVerification />
+      <Toaster position="top-right" />
     </div>
   );
 };

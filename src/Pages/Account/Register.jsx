@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 import { useForm } from 'react-hook-form';
 import {
@@ -8,11 +8,14 @@ import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from 'react-firebase-hooks/auth';
+
 import { auth } from '../../firebase.init';
 import SpinnerFullScreen from '../Shared/SpinnerFullScreen';
 import Error from '../Shared/Error';
 import GoogleLogin from './GoogleLogin';
 import { useUpdateUserGetToken } from '../../Hooks/useUpdateUserGetToken';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -36,9 +39,25 @@ const Register = () => {
   };
 
   const onError = (error) => {
-    toast.error(error?.message);
+    toast.error(
+      (t) => (
+        <div className="flex gap-3 items-center">
+          <p>
+            {error?.message || 'Error saving user to DB and generating JWT.'}
+          </p>
+          <FontAwesomeIcon
+            className="cursor-pointer"
+            onClick={() => toast.dismiss(t.id)}
+            icon={faClose}
+          />
+        </div>
+      ),
+      {
+        duration: 6000,
+        id: 'errorRegisterUpdateUserGetToken',
+      }
+    );
   };
-
   const { mutateAsync, isLoading } = useUpdateUserGetToken({
     onSuccess,
     onError,
@@ -55,7 +74,6 @@ const Register = () => {
 
   // Redirects if user exists
   useEffect(() => {
-    console.log(authUser);
     if (authUser && localStorage.getItem('paintitblack-at') === authUser.uid) {
       navigate('/', { replace: true });
     }
@@ -72,7 +90,22 @@ const Register = () => {
       await createUserWithEmailAndPassword(email, password);
       if (!emailError) await updateProfile({ displayName: name });
       if (emailUser) {
-        toast.success('Registration Successful, Please verify your email.');
+        toast.success(
+          (t) => (
+            <div className="flex gap-3 items-center">
+              <p>Registration Successful, Please verify your email.</p>
+              <FontAwesomeIcon
+                className="cursor-pointer"
+                onClick={() => toast.dismiss(t.id)}
+                icon={faClose}
+              />
+            </div>
+          ),
+          {
+            duration: 6000,
+            id: 'successRegistrationUpdateUserGetToken',
+          }
+        );
       }
     }
   };

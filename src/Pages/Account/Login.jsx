@@ -5,7 +5,7 @@ import {
   useSignInWithEmailAndPassword,
 } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 import { auth } from '../../firebase.init';
 
@@ -13,6 +13,8 @@ import Error from '../Shared/Error';
 import SpinnerFullScreen from '../Shared/SpinnerFullScreen';
 import GoogleLogin from './GoogleLogin';
 import { useUpdateUserGetToken } from '../../Hooks/useUpdateUserGetToken';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => {
   const location = useLocation();
@@ -26,7 +28,24 @@ const Login = () => {
   };
 
   const onError = (error) => {
-    toast.error(error.message);
+    toast.error(
+      (t) => (
+        <div className="flex gap-3 items-center">
+          <p>
+            {error?.message || 'Error saving user to DB and generating JWT.'}
+          </p>
+          <FontAwesomeIcon
+            className="cursor-pointer"
+            onClick={() => toast.dismiss(t.id)}
+            icon={faClose}
+          />
+        </div>
+      ),
+      {
+        duration: 6000,
+        id: 'errorLoginUpdateUserGetToken',
+      }
+    );
   };
 
   const { mutateAsync, isLoading } = useUpdateUserGetToken({

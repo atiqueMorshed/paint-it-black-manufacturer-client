@@ -17,9 +17,8 @@ const updateUserGetToken = async ({ uid }) => {
         return { message: 'JWT SET' };
       }
     } catch (error) {
-      console.log(error);
       throw new Error(
-        error.response?.data || error?.message || 'Error getting access token.'
+        error?.response?.data || error?.message || 'Error getting access token.'
       );
     }
   } else {
