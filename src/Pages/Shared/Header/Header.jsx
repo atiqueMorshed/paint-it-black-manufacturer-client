@@ -23,7 +23,10 @@ const Header = () => {
       <div className="flex items-center justify-between w-9/12 mx-auto py-5">
         {/* Brand */}
         <Link to="/" className="flex items-center gap-3">
-          <FontAwesomeIcon className="w-10 h-10" icon={faFeatherPointed} />
+          <FontAwesomeIcon
+            className="w-10 h-10 text-primary"
+            icon={faFeatherPointed}
+          />
           <div className="flex flex-col justify-center text-xl font-extrabold">
             <p>Paint It</p>
             <p>Black</p>

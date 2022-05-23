@@ -13,6 +13,6 @@
 /* Extended Styles */
 @layer components {
   .button-style-1 {
-    @apply btn rounded hover:bg-opacity-90 hover:text-gray-100 text-base-100 dark:text-white;
+    @apply btn rounded bg-primary border-none hover:bg-opacity-90 hover:text-gray-100 text-base-100 dark:text-white;
   }
 }

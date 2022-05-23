@@ -17,25 +17,26 @@ const Tools = () => {
             alt="Paintbrush"
           />
           <div className="absolute bottom-5 left-6 md:left-10 lg:bottom-10 lg:left-20 shadow">
-            <div className="bg-base-100 bg-opacity-40 p-4 rounded flex flex-col gap-2">
+            <div className="bg-base-100 bg-opacity-30 p-4 rounded flex flex-col gap-2">
               <h1 className="text-2xl font-medium mb-2">PaintBrush</h1>
               <p className="text-xl text-accent">
                 Built with best quality bristles!
               </p>
               <p className="">
                 Minimum Order Quantity:{' '}
-                <span className="font-bold text-lg">1000</span>
+                <span className="font-extrabold text-lg">1000</span>
               </p>
               <p className="">
                 Total Available:{' '}
-                <span className="font-bold text-lg">12000</span>
+                <span className="font-extrabold text-lg">12000</span>
               </p>
               <p className="">
-                Price Per Unit: <span className="font-bold text-lg">$4</span>
+                Price Per Unit:{' '}
+                <span className="font-extrabold text-lg">$4</span>
               </p>
 
               <Link to="/items/brushes">
-                <button className="button-style-1">Order Now!</button>
+                <button className="button-style-1 mt-2">Order Now!</button>
               </Link>
             </div>
           </div>
@@ -47,25 +48,26 @@ const Tools = () => {
             alt="Paint Roller"
           />
           <div className="absolute bottom-5 left-6 md:left-10 lg:bottom-10 lg:left-20 shadow">
-            <div className="bg-base-100 bg-opacity-40 p-4 rounded flex flex-col gap-2">
+            <div className="bg-base-100 bg-opacity-30 p-4 rounded flex flex-col gap-2">
               <h1 className="text-2xl font-medium mb-2">Paint Roller</h1>
               <p className="text-xl text-accent">
                 We use high quality Synthetic roller
               </p>
               <p className="">
                 Minimum Order Quantity:{' '}
-                <span className="font-bold text-lg">1000</span>
+                <span className="font-extrabold text-lg">1000</span>
               </p>
               <p className="">
                 Total Available:{' '}
-                <span className="font-bold text-lg">12000</span>
+                <span className="font-extrabold text-lg">12000</span>
               </p>
               <p className="">
-                Price Per Unit: <span className="font-bold text-lg">$15</span>
+                Price Per Unit:{' '}
+                <span className="font-extrabold text-lg">$15</span>
               </p>
 
               <Link to="/items/rollers">
-                <button className="button-style-1">Order Now!</button>
+                <button className="button-style-1 mt-2">Order Now!</button>
               </Link>
             </div>
           </div>
@@ -78,23 +80,25 @@ const Tools = () => {
           alt="Paints"
         />
         <div className="absolute bottom-5 left-6 md:left-10 lg:bottom-10 lg:left-20 text-secondary shadow">
-          <div className="bg-base-100 bg-opacity-40 p-4 rounded flex flex-col gap-2">
+          <div className="bg-base-100 bg-opacity-30 p-4 rounded flex flex-col gap-2">
             <h1 className="text-2xl font-medium mb-2">Color Palettes</h1>
             <p className="text-xl text-accent">
               Get accurate color palettes from us.
             </p>
             <p className="">
               Minimum Order Quantity:{' '}
-              <span className="font-bold text-lg">1000</span>
+              <span className="font-extrabold text-lg">1000</span>
             </p>
             <p className="">
-              Total Available: <span className="font-bold text-lg">12000</span>
+              Total Available:{' '}
+              <span className="font-extrabold text-lg">12000</span>
             </p>
             <p className="">
-              Price Per Unit: <span className="font-bold text-lg">$20</span>
+              Price Per Unit:{' '}
+              <span className="font-extrabold text-lg">$20</span>
             </p>
             <Link to="/items/colors">
-              <button className="button-style-1">Order Now!</button>
+              <button className="button-style-1 mt-2">Order Now!</button>
             </Link>
           </div>
         </div>
