@@ -11,6 +11,10 @@ import Footer from './Pages/Shared/Footer';
 import RequireAuth from './Pages/Shared/RequireAuth';
 import Purchase from './Pages/Purchase/Purchase';
 import SendEmailVerification from './Pages/Shared/SendEmailVerification';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MyOrders from './Pages/Dashboard/MyOrders';
+import Profile from './Pages/Dashboard/Profile';
+import AddReview from './Pages/Dashboard/AddReview';
 
 const App = () => {
   return (
@@ -28,6 +32,18 @@ const App = () => {
             </RequireAuth>
           }
         />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        >
+          <Route index element={<MyOrders />} />
+          <Route path="review" element={<AddReview />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

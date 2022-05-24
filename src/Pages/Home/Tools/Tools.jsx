@@ -1,4 +1,4 @@
-import { useGetPublicData } from '../../../Hooks/getPublicData';
+import { useGetPublicData } from '../../../Hooks/useGetPublicData';
 import Spinner from '../../Shared/Spinner';
 import Tool from './Tool';
 

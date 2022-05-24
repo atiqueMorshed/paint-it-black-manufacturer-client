@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetPublicData } from '../../Hooks/getPublicData';
+import { useGetPublicData } from '../../Hooks/useGetPublicData';
 import SpinnerFullScreen from '../Shared/SpinnerFullScreen';
 import PurchaseInfo from './PurchaseInfo';
 import ToolCard from './ToolCard';
