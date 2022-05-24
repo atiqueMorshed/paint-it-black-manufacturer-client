@@ -6,6 +6,7 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import {
   faArrowRightFromBracket,
   faFeatherPointed,
+  faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { auth } from '../../../firebase.init';
@@ -33,27 +34,125 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="right flex justify-center items-center gap-3">
-          {authUser ? (
-            <div
-              onClick={() => {
-                localStorage.removeItem('paintitblack-at');
-                signOut(auth);
-              }}
-              className="cursor-pointer"
+        <div className="right">
+          {/* Hamburger menu */}
+          <div class="dropdown dropdown-end block md:hidden">
+            <label tabindex="0" class="btn btn-ghost btn-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h7"
+                />
+              </svg>
+            </label>
+            <ul
+              tabindex="0"
+              class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <FontAwesomeIcon
-                className="w-6 h-6"
-                icon={faArrowRightFromBracket}
-              />
+              {authUser ? (
+                <>
+                  <Link to="/dashboard" className="btn btn-ghost text-lg">
+                    Dashboard
+                  </Link>
+                  <Link
+                    to="/dashboard/profile"
+                    className="btn btn-ghost text-lg"
+                  >
+                    <FontAwesomeIcon className="w-6 h-6" icon={faUser} />{' '}
+                    {authUser?.displayName && (
+                      <p className="text-lg ml-2">
+                        {authUser.displayName.split(' ')[0]}
+                      </p>
+                    )}
+                  </Link>
+
+                  <div
+                    onClick={() => {
+                      localStorage.removeItem('paintitblack-at');
+                      signOut(auth);
+                    }}
+                    className="btn btn-ghost text-lg"
+                  >
+                    <FontAwesomeIcon icon={faSignOut} />
+                    <p className="pl-2">Logout</p>
+                  </div>
+                </>
+              ) : (
+                <Link to="/login" className="btn btn-ghost text-lg">
+                  Login
+                </Link>
+              )}
+              <div className="btn btn-ghost flex items-center gap-2">
+                <DarkMode />
+              </div>
+            </ul>
+          </div>
+
+          {/* Large Device Menu */}
+          <div className="hidden md:block">
+            <div className="flex justify-center items-center">
+              {authUser && (
+                <Link to="/dashboard" className="btn btn-ghost text-lg">
+                  Dashboard
+                </Link>
+              )}
+              <div class="dropdown dropdown-end bg-base-100 mr-2">
+                <label tabindex="0" class="btn btn-ghost">
+                  <FontAwesomeIcon className="w-6 h-6" icon={faUser} />
+                  {authUser?.displayName && (
+                    <p className="text-lg ml-2">
+                      {authUser.displayName.split(' ')[0]}
+                    </p>
+                  )}
+                </label>
+                <ul
+                  tabindex="0"
+                  class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-40"
+                >
+                  {authUser ? (
+                    <>
+                      <Link
+                        to="/dashboard/profile"
+                        className="btn btn-ghost text-lg"
+                      >
+                        Profile
+                      </Link>
+                      <div
+                        onClick={() => {
+                          localStorage.removeItem('paintitblack-at');
+                          signOut(auth);
+                        }}
+                        className="btn btn-ghost text-lg"
+                      >
+                        Logout
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <Link to="/login" className="btn btn-ghost text-lg">
+                        Login
+                      </Link>
+                      <Link to="/register" className="btn btn-ghost text-lg">
+                        Register
+                      </Link>
+                    </>
+                  )}
+                </ul>
+              </div>
+              <div className="border-l-2 pl-2">
+                <div className="btn btn-ghost">
+                  <DarkMode />
+                </div>
+              </div>
             </div>
-          ) : (
-            <Link to="/login" className="user cursor-pointer">
-              <FontAwesomeIcon className="w-6 h-6" icon={faUser} />
-            </Link>
-          )}
-          <div className="border-l-2 pl-2">
-            <DarkMode />
           </div>
         </div>
       </div>

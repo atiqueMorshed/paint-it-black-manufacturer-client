@@ -1,5 +1,5 @@
 import { useGetPublicData } from '../../../Hooks/getPublicData';
-import SpinnerFullScreen from '../../Shared/SpinnerFullScreen';
+import Spinner from '../../Shared/Spinner';
 import Tool from './Tool';
 
 const Tools = () => {
@@ -14,7 +14,16 @@ const Tools = () => {
   } = useGetPublicData({ name: 'getToolsData', url: '/api/tool' });
 
   if (isLoading || isFetching || isRefetching) {
-    return <SpinnerFullScreen />;
+    return (
+      <div id="tools" className="my-32 text-secondary">
+        <h1 className="text-4xl text-center font-medium pb-16">
+          Tools We Provide
+        </h1>
+        <div className="flex flex-col items-center gap-4 h-[200px]">
+          <Spinner />
+        </div>
+      </div>
+    );
   }
 
   if (isError) {
