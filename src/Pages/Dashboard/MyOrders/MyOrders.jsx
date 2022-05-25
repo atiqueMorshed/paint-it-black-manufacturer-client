@@ -8,10 +8,13 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
+import CheckoutForm from '../../Shared/CheckoutForm/CheckoutForm';
 
 const MyOrders = () => {
   const [authUser, authLoading] = useAuthState(auth);
+
   const [deleteOrder, setDeleteOrder] = useState();
+  const [payment, setPayment] = useState();
 
   const {
     isError,
@@ -137,13 +140,14 @@ const MyOrders = () => {
         </h1>
 
         <div className="overflow-x-auto w-full mt-8">
-          <table className="table w-full text-xs md:text-sm lg:text-lg">
+          <table className="table w-full text-xs md:text-sm lg:text-base">
             <thead>
               <tr>
                 <th>OID</th>
                 <th>Tool</th>
                 <th>Quantity</th>
                 <th>Total</th>
+                <th>Date</th>
                 <th>Shipping</th>
                 <th>Status</th>
                 <th>Pay</th>
@@ -158,12 +162,15 @@ const MyOrders = () => {
                   refetch={refetch}
                   deleteOrder={deleteOrder}
                   setDeleteOrder={setDeleteOrder}
+                  payment={payment}
+                  setPayment={setPayment}
                 />
               ))}
             </tbody>
           </table>
         </div>
 
+        {/* Delete Order Modal */}
         <input type="checkbox" id="deleteOrder" className="modal-toggle" />
         <div className="modal">
           <div className="modal-box relative">
@@ -174,7 +181,8 @@ const MyOrders = () => {
             >
               ✕
             </label>
-            <div className="flex flex-col justify-center gap-8">
+
+            <div className="flex flex-col justify-center items-center gap-8 max-w-sm mx-auto">
               <h3 className="text-lg font-bold">
                 You are about to delete order #{deleteOrder?.slice(-4)}
               </h3>
@@ -191,6 +199,61 @@ const MyOrders = () => {
                 Confirm Delete
               </button>
             </div>
+          </div>
+        </div>
+
+        {/* Pay Order Modal */}
+        <input type="checkbox" id="payOrder" className="modal-toggle" />
+        <div className="modal">
+          <div className="modal-box relative max-w-[350px]">
+            <label
+              htmlFor="payOrder"
+              onClick={() => setPayment(null)}
+              className="btn btn-sm btn-circle absolute right-2 top-2 z-10"
+            >
+              ✕
+            </label>
+            {payment?._id && (
+              <div className="flex flex-col justify-center items-center text-center max-w-[250px] mx-auto">
+                <h2 className="card-title mb-3">{payment.toolName}</h2>
+                <h3 className="text-xs bg-success font-bold text-black px-2 rounded-full mb-3">
+                  Order #{payment._id.slice(-4)}
+                </h3>
+                <div className="text-sm flex justify-between items-center w-full mx-auto mb-3">
+                  <p>Quantity</p>
+                  <span className="text-lg font-bold">{payment.quantity}</span>
+                </div>
+                <div className="text-sm flex justify-between items-center w-full mx-auto mb-3">
+                  <p>Subtotal</p>
+                  <span className="text-lg font-bold">
+                    ${Math.round(payment.total / 1.1)}
+                  </span>
+                </div>
+                <div className="text-sm flex justify-between items-center w-full mx-auto">
+                  <p>Vat (10%)</p>
+                  <span className="text-lg font-bold">
+                    ${payment.total - Math.round(payment.total / 1.1)}
+                  </span>
+                </div>
+                <div className="divider divider-vertical"></div>
+                <div className="text-sm flex justify-between items-center w-full mx-auto mb-3">
+                  <p>Total</p>
+                  <span className="text-lg font-bold">${payment.total}</span>
+                </div>
+                <CheckoutForm
+                  item={{
+                    orderId: payment._id,
+                    total: payment.total,
+                    uid: authUser.uid,
+                  }}
+                  billingDetails={{
+                    email: authUser.email,
+                    name: authUser?.displayName || 'N/A',
+                  }}
+                  refetch={refetch}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

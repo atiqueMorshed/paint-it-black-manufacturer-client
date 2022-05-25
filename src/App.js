@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+
 import Login from './Pages/Account/Login';
 import Register from './Pages/Account/Register';
 import Home from './Pages/Home/Home';

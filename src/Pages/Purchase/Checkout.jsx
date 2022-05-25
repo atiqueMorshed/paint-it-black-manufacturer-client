@@ -46,7 +46,7 @@ const Checkout = ({ orderData }) => {
           <div className="divider divider-horizontal"></div>
           <button
             onClick={() => {
-              navigate('/orders', { replace: true });
+              navigate('/dashboard', { replace: true });
             }}
             className="btn btn-sm hover:bg-primary"
           >

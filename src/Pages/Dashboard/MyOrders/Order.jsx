@@ -1,8 +1,25 @@
+import { format } from 'date-fns';
+import { parseISO } from 'date-fns/esm';
+
 const Order = ({
-  order: { _id, phone, address, quantity, total, toolName, paymentStatus },
+  order: {
+    _id,
+    phone,
+    address,
+    quantity,
+    total,
+    toolName,
+    paymentStatus,
+    imageUrl,
+    orderedOn,
+    paidOn,
+  },
   refetch,
   deleteOrder,
   setDeleteOrder,
+  payment,
+  setPayment,
+  shippedOn,
 }) => {
   return (
     <tr>
@@ -14,9 +31,27 @@ const Order = ({
       <td>
         <div className="flex items-center space-x-3">
           <div>
-            <div className="font-bold">{phone}</div>
+            <div>{phone}</div>
 
             <span className="badge badge-ghost badge-sm">{address}</span>
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <div className="flex items-center space-x-3">
+          <div>
+            <p className={`${paidOn === undefined ? 'text-base' : 'text-sm'}`}>
+              Ordered: {format(parseISO(orderedOn), 'PP')}
+            </p>
+            {paymentStatus === 'paid' && (
+              <p className="text-sm">Paid: {format(parseISO(paidOn), 'PP')}</p>
+            )}
+            {paymentStatus === 'shipped' && (
+              <p className="text-sm">
+                Shipped: {format(parseISO(shippedOn), 'PP')}
+              </p>
+            )}
           </div>
         </div>
       </td>
@@ -32,8 +67,17 @@ const Order = ({
       </td>
 
       <td>
-        {(paymentStatus !== 'paid' || paymentStatus !== 'shipped') && (
-          <span className="btn btn-xs btn-success opacity-70">pay</span>
+        {!paymentStatus && (
+          <label
+            onClick={() =>
+              setPayment({ _id, total, quantity, toolName, imageUrl })
+            }
+            disabled={payment?._id === _id ? true : false}
+            htmlFor="payOrder"
+            className="btn btn-xs btn-success opacity-70"
+          >
+            pay
+          </label>
         )}
       </td>
       <th>
