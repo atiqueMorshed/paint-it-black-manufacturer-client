@@ -6,7 +6,7 @@ const updateProfile = async (profile) => {
     try {
       const { data } = await axios({
         method: 'PATCH',
-        url: '/api/user',
+        url: '/api/userprofile',
         data: profile,
       });
       return data;

@@ -4,9 +4,9 @@ import { Link, Outlet } from 'react-router-dom';
 const Dashboard = () => {
   return (
     <div>
-      <div className="drawer">
+      <div className="drawer h-auto min-h-[calc(100vh-403px)]">
         <input id="dashboardMenu" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
+        <div className="drawer-content h-auto">
           <div className="">
             <div className="w-9/12 mx-auto my-4">
               <label htmlFor="dashboardMenu" className="btn drawer-button">
