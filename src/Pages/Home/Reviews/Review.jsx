@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as faSolidStar } from '@fortawesome/free-solid-svg-icons';
 
-const Review = ({ review: { name, date, rating, review } }) => {
+const Review = ({ review: { displayName, reviewedOn, rating, review } }) => {
   // Generates Random Profile background.
   const colors = [
     '#F06292',
@@ -21,7 +21,7 @@ const Review = ({ review: { name, date, rating, review } }) => {
   const idx = Math.floor(Math.random() * 9);
 
   // Generates initials.
-  const names = name.split(' ');
+  const names = displayName.split(' ');
   let initials = names[0][0];
   if (names[1][0]) initials += names[1][0];
 
@@ -37,9 +37,9 @@ const Review = ({ review: { name, date, rating, review } }) => {
 
         <div className="space-y-1 font-medium">
           <div>
-            {name}
+            {displayName}
             <div className="block text-sm text-gray-500 dark:text-gray-400">
-              Reviewed {formatDistanceToNow(parseISO(date))} ago.
+              Reviewed {formatDistanceToNow(parseISO(reviewedOn))} ago.
             </div>
           </div>
         </div>

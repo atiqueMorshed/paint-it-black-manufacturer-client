@@ -13,6 +13,7 @@ const Order = ({
     imageUrl,
     orderedOn,
     paidOn,
+    toolId,
   },
   refetch,
   deleteOrder,
@@ -70,7 +71,7 @@ const Order = ({
         {!paymentStatus && (
           <label
             onClick={() =>
-              setPayment({ _id, total, quantity, toolName, imageUrl })
+              setPayment({ _id, total, quantity, toolName, imageUrl, toolId })
             }
             disabled={payment?._id === _id ? true : false}
             htmlFor="payOrder"

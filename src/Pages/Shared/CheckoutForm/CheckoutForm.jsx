@@ -42,7 +42,7 @@ const CheckoutForm = ({
   billingDetails,
   extraFormInfo: { toolName, quantity },
 }) => {
-  const { total, orderId } = item;
+  const { total, orderId, toolId } = item;
   const stripe = useStripe();
   const elements = useElements();
   const options = useOptions();
@@ -166,6 +166,8 @@ const CheckoutForm = ({
         orderId: item.orderId,
         total: item.total,
         uid: item.uid,
+        quantity,
+        toolId,
       });
     }
   };

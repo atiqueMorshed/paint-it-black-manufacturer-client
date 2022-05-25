@@ -102,6 +102,7 @@ const PurchaseInfo = ({ minQuantity, available, price, toolId, toolName }) => {
             orderId: orderData._id,
             total: orderData.total,
             uid: orderData.uid,
+            toolId: orderData.toolId,
           }}
           extraFormInfo={{
             toolName: orderData.toolName,
