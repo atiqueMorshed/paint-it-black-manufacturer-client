@@ -10,6 +10,7 @@ import { usePlaceOrder } from '../../Hooks/usePlaceOrder';
 import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
+import CheckoutForm from '../Shared/CheckoutForm/CheckoutForm';
 
 const PurchaseInfo = ({ minQuantity, available, price, toolId, toolName }) => {
   const [authUser, authLoading] = useAuthState(auth);
@@ -94,7 +95,25 @@ const PurchaseInfo = ({ minQuantity, available, price, toolId, toolName }) => {
     return <SpinnerFullScreen />;
   }
   if (orderData) {
-    return <Checkout orderData={orderData} />;
+    return (
+      <div class="w-fit shadow-xl p-8 rounded-xl">
+        <CheckoutForm
+          item={{
+            orderId: orderData._id,
+            total: orderData.total,
+            uid: orderData.uid,
+          }}
+          extraFormInfo={{
+            toolName: orderData.toolName,
+            quantity: orderData.quantity,
+          }}
+          billingDetails={{
+            email: orderData.email,
+            name: orderData?.displayName || 'N/A',
+          }}
+        />
+      </div>
+    );
   }
 
   return (

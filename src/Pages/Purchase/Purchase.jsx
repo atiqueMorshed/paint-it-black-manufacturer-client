@@ -58,7 +58,7 @@ const Purchase = () => {
       <div className="my-32 text-secondary min-h-[calc(100vh-400px)] md:max-w-[90%] mx-auto">
         <h1 className="text-4xl text-center font-medium pb-16">Purchase</h1>
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-4 lg:gap-16">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 lg:gap-16 max-w-[1000px] mx-auto">
           <ToolCard tool={data} />
           <div className="divider divider-horizontal"></div>
           <PurchaseInfo

@@ -139,7 +139,7 @@ const MyOrders = () => {
           Dashboard - My Orders
         </h1>
 
-        <div className="overflow-x-auto w-full mt-8">
+        <div className="overflow-x-auto w-full mt-8 mb-20">
           <table className="table w-full text-xs md:text-sm lg:text-base">
             <thead>
               <tr>
@@ -214,45 +214,22 @@ const MyOrders = () => {
               ✕
             </label>
             {payment?._id && (
-              <div className="flex flex-col justify-center items-center text-center max-w-[250px] mx-auto">
-                <h2 className="card-title mb-3">{payment.toolName}</h2>
-                <h3 className="text-xs bg-success font-bold text-black px-2 rounded-full mb-3">
-                  Order #{payment._id.slice(-4)}
-                </h3>
-                <div className="text-sm flex justify-between items-center w-full mx-auto mb-3">
-                  <p>Quantity</p>
-                  <span className="text-lg font-bold">{payment.quantity}</span>
-                </div>
-                <div className="text-sm flex justify-between items-center w-full mx-auto mb-3">
-                  <p>Subtotal</p>
-                  <span className="text-lg font-bold">
-                    ${Math.round(payment.total / 1.1)}
-                  </span>
-                </div>
-                <div className="text-sm flex justify-between items-center w-full mx-auto">
-                  <p>Vat (10%)</p>
-                  <span className="text-lg font-bold">
-                    ${payment.total - Math.round(payment.total / 1.1)}
-                  </span>
-                </div>
-                <div className="divider divider-vertical"></div>
-                <div className="text-sm flex justify-between items-center w-full mx-auto mb-3">
-                  <p>Total</p>
-                  <span className="text-lg font-bold">${payment.total}</span>
-                </div>
-                <CheckoutForm
-                  item={{
-                    orderId: payment._id,
-                    total: payment.total,
-                    uid: authUser.uid,
-                  }}
-                  billingDetails={{
-                    email: authUser.email,
-                    name: authUser?.displayName || 'N/A',
-                  }}
-                  refetch={refetch}
-                />
-              </div>
+              <CheckoutForm
+                item={{
+                  orderId: payment._id,
+                  total: payment.total,
+                  uid: authUser.uid,
+                }}
+                extraFormInfo={{
+                  toolName: payment.toolName,
+                  quantity: payment.quantity,
+                }}
+                billingDetails={{
+                  email: authUser.email,
+                  name: authUser?.displayName || 'N/A',
+                }}
+                refetch={refetch}
+              />
             )}
           </div>
         </div>
