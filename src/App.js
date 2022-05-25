@@ -16,6 +16,8 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
 import Profile from './Pages/Dashboard/Profile';
 import AddReview from './Pages/Dashboard/AddReview';
+import RequireAdmin from './Pages/Shared/RequireAdmin';
+import ManageOrder from './Pages/Dashboard/ManageOrder';
 
 const App = () => {
   return (
@@ -41,9 +43,17 @@ const App = () => {
             </RequireAuth>
           }
         >
-          <Route index element={<MyOrders />} />
+          <Route index element={<Profile />} />
           <Route path="review" element={<AddReview />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="order" element={<MyOrders />} />
+          <Route
+            path="manage-order"
+            element={
+              <RequireAdmin>
+                <ManageOrder />
+              </RequireAdmin>
+            }
+          />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

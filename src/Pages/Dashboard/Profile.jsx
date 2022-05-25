@@ -35,7 +35,6 @@ const Profile = () => {
     });
 
   useEffect(() => {
-    console.log(data);
     if (data?.location) setValue('location', data.location);
     if (data?.education) setValue('education', data.education);
     if (data?.phone) setValue('phone', data.phone);
