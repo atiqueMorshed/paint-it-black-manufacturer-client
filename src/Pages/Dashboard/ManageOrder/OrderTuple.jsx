@@ -1,6 +1,6 @@
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import { parseISO } from 'date-fns/esm';
 import toast from 'react-hot-toast';
 import { useUpdateStatusToShipped } from '../../../Hooks/useUpdateStatusToShipped';
@@ -77,15 +77,13 @@ const OrderTuple = ({
       <td>
         <div className="flex items-center space-x-3">
           <div>
-            {orderedOn && (
-              <p className="text-sm">
-                Ordered: {format(parseISO(paidOn), 'PP')}
-              </p>
-            )}
-            {paidOn && (
+            <p className={`${paidOn === undefined ? 'text-base' : 'text-sm'}`}>
+              Ordered: {format(parseISO(orderedOn), 'PP')}
+            </p>
+            {paymentStatus === 'paid' && (
               <p className="text-sm">Paid: {format(parseISO(paidOn), 'PP')}</p>
             )}
-            {shippedOn && (
+            {paymentStatus === 'shipped' && (
               <p className="text-sm">
                 Shipped: {format(parseISO(shippedOn), 'PP')}
               </p>
