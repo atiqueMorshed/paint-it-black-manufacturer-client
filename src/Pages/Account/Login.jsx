@@ -48,7 +48,7 @@ const Login = () => {
     );
   };
 
-  const { mutateAsync, isLoading } = useUpdateUserGetToken({
+  const { mutate, isLoading } = useUpdateUserGetToken({
     onSuccess,
     onError,
   });
@@ -66,11 +66,11 @@ const Login = () => {
   // Generates JWT after successful login
   useEffect(() => {
     if (emailUser?.user) {
-      mutateAsync({
+      mutate({
         uid: emailUser.user.uid,
       });
     }
-  }, [emailUser, mutateAsync]);
+  }, [emailUser, mutate]);
 
   // Resets form on success
   useEffect(() => {

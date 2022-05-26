@@ -44,7 +44,7 @@ const GoogleLogin = ({ from }) => {
     );
   };
 
-  const { mutateAsync, isLoading } = useUpdateUserGetToken({
+  const { mutate, isLoading } = useUpdateUserGetToken({
     onSuccess,
     onError,
   });
@@ -52,11 +52,12 @@ const GoogleLogin = ({ from }) => {
   // Generates JWT after successful login
   useEffect(() => {
     if (googleUser?.user) {
-      mutateAsync({
+      mutate({
         uid: googleUser.user.uid,
+        email: googleUser.user.email,
       });
     }
-  }, [googleUser, mutateAsync]);
+  }, [googleUser, mutate]);
 
   // Navigates to "from"
   useEffect(() => {

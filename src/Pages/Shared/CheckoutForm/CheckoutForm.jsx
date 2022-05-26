@@ -100,7 +100,7 @@ const CheckoutForm = ({
         id: 'successSavingPaymentToDB',
       }
     );
-    refetch ? refetch() : navigate('/dashboard', { replace: true });
+    refetch ? refetch() : navigate('/dashboard/order', { replace: true });
   };
   const onPaymentSavedToDBError = (error) => {
     toast.error(

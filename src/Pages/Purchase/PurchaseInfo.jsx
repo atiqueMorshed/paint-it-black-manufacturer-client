@@ -96,7 +96,7 @@ const PurchaseInfo = ({ minQuantity, available, price, toolId, toolName }) => {
   }
   if (orderData) {
     return (
-      <div class="w-fit shadow-xl p-8 rounded-xl">
+      <div className="w-fit shadow-xl p-8 rounded-xl">
         <CheckoutForm
           item={{
             orderId: orderData._id,

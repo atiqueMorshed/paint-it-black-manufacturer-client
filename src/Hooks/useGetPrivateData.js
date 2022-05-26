@@ -3,7 +3,6 @@ import axios from '../api/axiosAuthBearer';
 
 const getPrivateData = async ({ queryKey }) => {
   const url = queryKey[1];
-
   if (url) {
     try {
       const { data } = await axios.get(url);

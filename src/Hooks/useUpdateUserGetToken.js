@@ -1,15 +1,13 @@
 import { useMutation } from 'react-query';
 import axios from '../api/axiosBaseUrl'; // axios with the baseURL
 
-const updateUserGetToken = async ({ uid }) => {
-  if (uid) {
+const updateUserGetToken = async (payload) => {
+  if (payload) {
     try {
       const { data } = await axios({
         method: 'PUT',
         url: '/api/user',
-        data: {
-          uid,
-        },
+        data: payload,
       });
 
       if (data) {

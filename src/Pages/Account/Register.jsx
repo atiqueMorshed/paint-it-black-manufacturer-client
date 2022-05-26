@@ -58,7 +58,7 @@ const Register = () => {
       }
     );
   };
-  const { mutateAsync, isLoading } = useUpdateUserGetToken({
+  const { mutate, isLoading } = useUpdateUserGetToken({
     onSuccess,
     onError,
   });
@@ -66,11 +66,12 @@ const Register = () => {
   // Updates user and generates JWT after successful login
   useEffect(() => {
     if (emailUser?.user) {
-      mutateAsync({
+      mutate({
         uid: emailUser.user.uid,
+        email: emailUser.user.email,
       });
     }
-  }, [emailUser, mutateAsync]);
+  }, [emailUser, mutate]);
 
   // Redirects if user exists
   useEffect(() => {

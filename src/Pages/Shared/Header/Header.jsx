@@ -58,10 +58,7 @@ const Header = () => {
                   <Link to="/dashboard" className="btn btn-ghost text-lg">
                     Dashboard
                   </Link>
-                  <Link
-                    to="/dashboard/profile"
-                    className="btn btn-ghost text-lg"
-                  >
+                  <Link to="/dashboard" className="btn btn-ghost text-lg">
                     <FontAwesomeIcon className="w-6 h-6" icon={faUser} />{' '}
                     {authUser?.displayName && (
                       <p className="text-lg ml-2">
@@ -115,10 +112,7 @@ const Header = () => {
                 >
                   {authUser ? (
                     <>
-                      <Link
-                        to="/dashboard/profile"
-                        className="btn btn-ghost text-lg"
-                      >
+                      <Link to="/dashboard" className="btn btn-ghost text-lg">
                         Profile
                       </Link>
                       <div
