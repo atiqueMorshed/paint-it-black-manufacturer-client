@@ -82,7 +82,7 @@ const Dashboard = () => {
                   to="/dashboard/manage-order"
                   className="btn btn-ghost text-sm sm:text-lg"
                 >
-                  Manage Order
+                  Manage Orders
                 </Link>
                 <Link
                   to="/dashboard/add-tool"
@@ -94,7 +94,7 @@ const Dashboard = () => {
                   to="/dashboard/manage-tool"
                   className="btn btn-ghost text-sm sm:text-lg"
                 >
-                  Add Product
+                  Manage Tool
                 </Link>
                 <Link
                   to="/dashboard/make-admin"

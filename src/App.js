@@ -22,6 +22,7 @@ import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import AddTool from './Pages/Dashboard/AddTool';
 import Blog from './Pages/Blog';
 import Portfolio from './Pages/Portfolio';
+import ManageTool from './Pages/Dashboard/ManageTool/ManageTool';
 
 const App = () => {
   return (
@@ -65,6 +66,14 @@ const App = () => {
             element={
               <RequireAdmin>
                 <MakeAdmin />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manage-tool"
+            element={
+              <RequireAdmin>
+                <ManageTool />
               </RequireAdmin>
             }
           />

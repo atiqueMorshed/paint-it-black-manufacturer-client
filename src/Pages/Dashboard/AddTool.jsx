@@ -91,7 +91,7 @@ const AddTool = () => {
   return (
     <div className="flex justify-center items-center">
       <div className="card card-compact w-11/12 max-w-sm px-4 py-10 h-fit bg-base-100 shadow-xl">
-        <h1 className="text-3xl font-medium mb-4 text-center">Add Review</h1>
+        <h1 className="text-3xl font-medium mb-4 text-center">Add Tool</h1>
         <form
           className="flex flex-col items-start pl-2 sm:pl-4"
           autoComplete="off"
