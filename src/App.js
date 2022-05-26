@@ -19,6 +19,7 @@ import AddReview from './Pages/Dashboard/AddReview';
 import RequireAdmin from './Pages/Shared/RequireAdmin';
 import ManageOrder from './Pages/Dashboard/ManageOrder';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
+import AddTool from './Pages/Dashboard/AddTool';
 
 const App = () => {
   return (
@@ -60,6 +61,14 @@ const App = () => {
             element={
               <RequireAdmin>
                 <MakeAdmin />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="add-tool"
+            element={
+              <RequireAdmin>
+                <AddTool />
               </RequireAdmin>
             }
           />

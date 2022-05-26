@@ -272,6 +272,10 @@ const PurchaseInfo = ({ minQuantity, available, price, toolId, toolName }) => {
             name="address"
             {...register('phone', {
               required: 'Phone is required.',
+              pattern: {
+                value: /^[0-9]+$/,
+                message: 'Only numbers',
+              },
               validate: (val) => {
                 if (val.startsWith(' ') || val.endsWith(' ')) {
                   return 'Cannot contain empty space in the beginning or end.';
