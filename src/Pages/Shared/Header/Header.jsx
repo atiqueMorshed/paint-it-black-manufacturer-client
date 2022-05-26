@@ -98,6 +98,9 @@ const Header = () => {
               <Link to="/Blog" className="btn btn-ghost text-lg">
                 Blog
               </Link>
+              <Link to="/Portfolio" className="btn btn-ghost text-lg">
+                Portfolio
+              </Link>
               {authUser && (
                 <Link to="/dashboard" className="btn btn-ghost text-lg">
                   Dashboard

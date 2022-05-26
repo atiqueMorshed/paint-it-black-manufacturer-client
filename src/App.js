@@ -21,6 +21,7 @@ import ManageOrder from './Pages/Dashboard/ManageOrder';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import AddTool from './Pages/Dashboard/AddTool';
 import Blog from './Pages/Blog';
+import Portfolio from './Pages/Portfolio';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/blog" element={<Blog />} />
         <Route
           path="/tools/:toolId"
