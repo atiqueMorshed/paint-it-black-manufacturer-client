@@ -53,6 +53,9 @@ const Header = () => {
               tabIndex="0"
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
+              <Link to="/Blog" className="btn btn-ghost text-lg">
+                Blog
+              </Link>
               {authUser ? (
                 <>
                   <Link to="/dashboard" className="btn btn-ghost text-lg">
@@ -92,6 +95,9 @@ const Header = () => {
           {/* Large Device Menu */}
           <div className="hidden md:block">
             <div className="flex justify-center items-center">
+              <Link to="/Blog" className="btn btn-ghost text-lg">
+                Blog
+              </Link>
               {authUser && (
                 <Link to="/dashboard" className="btn btn-ghost text-lg">
                   Dashboard
