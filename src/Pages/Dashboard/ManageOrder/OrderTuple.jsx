@@ -72,7 +72,7 @@ const OrderTuple = ({
       <th className="text-xs">{_id.slice(-4)}</th>
       <th>{email}</th>
       <td>{toolName}</td>
-      <td>{total}</td>
+      <td>${total}</td>
 
       <td>
         <div className="flex items-center space-x-3">
