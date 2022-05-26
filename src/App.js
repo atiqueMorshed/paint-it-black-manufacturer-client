@@ -17,7 +17,7 @@ import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
 import Profile from './Pages/Dashboard/Profile';
 import AddReview from './Pages/Dashboard/AddReview';
 import RequireAdmin from './Pages/Shared/RequireAdmin';
-import ManageOrder from './Pages/Dashboard/ManageOrder';
+import ManageOrder from './Pages/Dashboard/ManageOrder/ManageOrder';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import AddTool from './Pages/Dashboard/AddTool';
 import Blog from './Pages/Blog';
