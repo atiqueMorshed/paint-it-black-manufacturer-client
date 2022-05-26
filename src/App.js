@@ -23,6 +23,7 @@ import AddTool from './Pages/Dashboard/AddTool';
 import Blog from './Pages/Blog';
 import Portfolio from './Pages/Portfolio';
 import ManageTool from './Pages/Dashboard/ManageTool/ManageTool';
+import RequireUser from './Pages/Shared/RequireUser';
 
 const App = () => {
   return (
@@ -38,7 +39,9 @@ const App = () => {
           path="/tools/:toolId"
           element={
             <RequireAuth>
-              <Purchase />
+              <RequireUser>
+                <Purchase />
+              </RequireUser>
             </RequireAuth>
           }
         />
@@ -51,8 +54,22 @@ const App = () => {
           }
         >
           <Route index element={<Profile />} />
-          <Route path="review" element={<AddReview />} />
-          <Route path="order" element={<MyOrders />} />
+          <Route
+            path="review"
+            element={
+              <RequireUser>
+                <AddReview />
+              </RequireUser>
+            }
+          />
+          <Route
+            path="order"
+            element={
+              <RequireUser>
+                <MyOrders />
+              </RequireUser>
+            }
+          />
           <Route
             path="manage-order"
             element={

@@ -1,6 +1,6 @@
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { format, isValid } from 'date-fns';
+import { format } from 'date-fns';
 import { parseISO } from 'date-fns/esm';
 import toast from 'react-hot-toast';
 import { useUpdateStatusToShipped } from '../../../Hooks/useUpdateStatusToShipped';
